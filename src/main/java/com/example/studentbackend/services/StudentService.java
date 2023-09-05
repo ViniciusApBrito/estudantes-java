@@ -29,12 +29,11 @@ public class StudentService {
    }
 
    public void deleteStudentById(long id) {
-      // verificando se existe um produto(entidade) com o id passado
-      // se existir, ele exclui o produto
+
       if (this.repository.existsById(id)) {
          this.repository.deleteById(id);
       }
-      // se não, ele lança uma excessão
+
       else {
          throw new EntityNotFoundException("Student not found");
 
@@ -43,8 +42,8 @@ public class StudentService {
    }
 
    public StudentResponse save(StudentRequest student) {
-    var entity =  this.repository.save(StudentMapper.toEntity(student));
-    return StudentMapper.toDTO(entity);
+      var entity = this.repository.save(StudentMapper.toEntity(student));
+      return StudentMapper.toDTO(entity);
    }
 
    public void update(long id, StudentRequest student) {
