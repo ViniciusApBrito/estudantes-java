@@ -1,5 +1,8 @@
 package com.example.studentbackend.mappers;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.example.studentbackend.dtos.StudentRequest;
 import com.example.studentbackend.dtos.StudentResponse;
 import com.example.studentbackend.entities.Student;
@@ -20,4 +23,11 @@ public class StudentMapper {
                 student.getLocation(), student.getAge());
 
     }
+
+    public static List<StudentResponse> toDTOList(List<Student> students) {
+        return students.stream()
+                .map(StudentMapper::toDTO)
+                .collect(Collectors.toList());
+    }
+
 }

@@ -47,13 +47,14 @@ public class StudentService {
     return StudentMapper.toDTO(entity);
    }
 
-   public void update(long id, Student student) {
+   public void update(long id, StudentRequest student) {
       try {
          var updateStudent = this.repository.getReferenceById(id);
-         updateStudent.setName(student.getName());
-         updateStudent.setEmail(student.getEmail());
-         updateStudent.setCpf(student.getCpf());
-         updateStudent.setLocation(student.getLocation());
+         updateStudent.setName(student.name());
+         updateStudent.setEmail(student.email());
+         updateStudent.setCpf(student.cpf());
+         updateStudent.setLocation(student.location());
+         updateStudent.setAge(student.age());
 
          this.repository.save(updateStudent);
       } catch (EntityNotFoundException e) {
